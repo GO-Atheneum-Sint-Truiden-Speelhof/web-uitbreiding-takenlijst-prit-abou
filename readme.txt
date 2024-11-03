@@ -1,0 +1,1 @@
+Dit voorbeeld bevat php-bestanden. Je kan ze enkel lokaal openen in een browser als je XAMPP start en je naar de localhost surft. Kopieer de voorbeeldbestanden eerst naar het map "htdocs" in de map "xampp".
