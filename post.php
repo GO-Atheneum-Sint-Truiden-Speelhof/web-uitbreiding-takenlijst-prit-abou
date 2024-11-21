@@ -6,6 +6,10 @@
 <body>
 
     <?php
+    $servername = "test"; 
+    $username = "test";        
+    $password = "abou";            
+    $dbname = "tasks"; 
 
      '.$_POST["task-name"].'
      
