@@ -1,5 +1,3 @@
-<!doctype html>
-<html lang=nl>
 
 <head>
 	<meta charset=utf-8>
@@ -17,12 +15,6 @@
         <div class="input-group">
         <input type="text" id="task-name" class="form-control" required>
         <button type="submit" class="btn btn-dark">Toevoegen</button>
-		
         </div>
-        </form>
-
-        
-        
-	<?php include "includes/functies.php";?>
+</form>
 </body>
-</html>
