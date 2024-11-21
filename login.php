@@ -47,16 +47,18 @@ if (isset($_POST["gebruikersnaam"]) && !empty($_POST["gebruikersnaam"])) {
     $conn->close();
 } else {
     ?>
-    <form method="post" action="index.php">
+    <form method="post" action="index.php" class="form">
         <label for="gebruikersnaam">Gebruikersnaam: </label>
-        <input name="gebruikersnaam" id="gebruikersnaam" type="text" required>
+        <input name="gebruikersnaam" class="form-control" id="gebruikersnaam" type="text" required>
         <label for="wachtwoord">Wachtwoord: </label>
-        <input name="wachtwoord" id="wachtwoord" type="password" required>
-        <button type="submit">Login</button>
+        <input name="wachtwoord" class="form-control" id="wachtwoord" type="password" required>
+        <div class="text-center">
+        <button type="submit" class= "btn btn-dark">Login</button>
+        </div>
     </form>
     <?php
     }
 ?>
-<?php include 'functies.php';?>
+<?php include 'includes/functies.php';?>
 </body>
 </html>
