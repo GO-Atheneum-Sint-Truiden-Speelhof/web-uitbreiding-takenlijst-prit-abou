@@ -13,7 +13,7 @@
 
 <div class="card shadow-sm">
         <div class="card-body">
-            <table class="table">
+            <table class="table table-dark">
             <thead class="thead-dark">
                 <tr>
                  <th>Nr</th>
@@ -22,6 +22,7 @@
 				 <th>Gemaakt op</th>
                 </tr>
             </thead>
+            </table>
 
             <tbody id="taak-lijst">
             <?php
@@ -54,7 +55,7 @@
                 }
                 ?>
             </tbody>
-            </table>
+            
         </div>
 </div>
 </body>
