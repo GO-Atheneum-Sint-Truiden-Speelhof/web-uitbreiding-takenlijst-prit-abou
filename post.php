@@ -6,7 +6,7 @@
 <body>
 
     <?php
-    $servername = "test"; 
+    $servername = "takenlijst"; 
     $username = "test";        
     $password = "";            
     $dbname = "tasks"; 
