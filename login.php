@@ -17,9 +17,9 @@
 <?php
 if (isset($_POST["gebruikersnaam"]) && !empty($_POST["gebruikersnaam"])) {
     $servername = 'localhost';
-    $database = "gebruikers";
+    $database = "takenlijst";
     $gebruikersnaam = "taak";
-    $wachtwoord = "123";
+    $wachtwoord = "";
 
     $conn = new mysqli($servername, $database, $gebruikersnaam, $wachtwoord);
 
@@ -48,14 +48,15 @@ if (isset($_POST["gebruikersnaam"]) && !empty($_POST["gebruikersnaam"])) {
 } else {
     ?>
     <form method="post" action="index.php">
-        <label for="username">Gebruikersnaam: </label>
-        <input name="username" id="username" type="text" required>
-        <label for="Wachtwoord">Wachtwoord: </label>
-        <input name="Wachtwoord" id="Wachtwoord" type="password" required>
+        <label for="gebruikersnaam">Gebruikersnaam: </label>
+        <input name="gebruikersnaam" id="gebruikersnaam" type="text" required>
+        <label for="wachtwoord">Wachtwoord: </label>
+        <input name="wachtwoord" id="wachtwoord" type="password" required>
         <button type="submit">Login</button>
     </form>
     <?php
     }
 ?>
+<?php include 'functies.php';?>
 </body>
 </html>
