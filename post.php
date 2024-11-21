@@ -8,8 +8,10 @@
     <?php
     $servername = "test"; 
     $username = "test";        
-    $password = "abou";            
+    $password = "";            
     $dbname = "tasks"; 
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
 
      '.$_POST["task-name"].'
      
