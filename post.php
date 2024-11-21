@@ -6,13 +6,7 @@
 <body>
 
     <?php
-    $servername = "takenlijst"; 
-    $username = "test";        
-    $password = "";            
-    $dbname = "tasks"; 
-
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
+   
      '.$_POST["task-name"].'
      
     ?>
@@ -32,7 +26,12 @@
             <tbody id="taak-lijst">
             <?php
 
-                $conn = mysqli_connect("localhost", "username", "password", "database_name");
+            $servername = "takenlijst"; 
+            $username = "test";        
+            $password = "";            
+            $dbname = "tasks"; 
+
+$conn = new mysqli($servername, $username, $password, $dbname);
 
             if (!$conn) {
                 die("Connection failed: " . mysqli_connect_error());
