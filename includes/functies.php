@@ -20,4 +20,15 @@ function haalGebruikerOp($gebruikersnaam)
 {
     $conn = maakVerbinding();
     $gebruikersnaam = $conn->real_escape_string($gebruikersnaam);
+    $query = "SELECT wachtwoord FROM gebruikers WHERE gebruikersnaam = '$gebruikersnaam'";
+    $result = $conn->query($query);
+
+    $conn->close();
+
+    if ($result && $result->num_rows > 0) {
+        return $result->fetch_assoc();
+    } else {
+        return null;
+    }
 }
+
