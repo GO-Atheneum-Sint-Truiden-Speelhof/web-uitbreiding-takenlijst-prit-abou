@@ -9,7 +9,7 @@
 	<script src="scripts/jquery.js"></script>
 	<script src="scripts/bootstrap.js"></script>
 	<link rel="icon" type="image/png" href="favicon/lijstfoto.webp">
-	<h1 class="text-center mb-4">To-Do List</h1>
+	<h1 class="text-center mb-4">To-Do Lijst</h1>
 </head>
 
 <body>
@@ -19,7 +19,7 @@ if (isset($_POST["gebruikersnaam"]) && !empty($_POST["gebruikersnaam"])) {
     $servername = 'localhost';
     $database = "takenlijst";
     $gebruikersnaam = "taak";
-    $wachtwoord = "";
+    $wachtwoord = "123";
 
     $conn = new mysqli($servername, $database, $gebruikersnaam, $wachtwoord);
 
