@@ -17,11 +17,11 @@
 <?php
 if (isset($_POST["gebruikersnaam"]) && !empty($_POST["gebruikersnaam"])) {
     $servername = 'localhost';
-    $database = "takenlijst";
-    $gebruikersnaam = "taak";
-    $wachtwoord = "123";
+    $gebruikersnaam = 'taak';
+    $wachtwoord = '123';
+    $database = 'takenlijst';
 
-    $conn = new mysqli($servername, $database, $gebruikersnaam, $wachtwoord);
+    $conn = new mysqli($host, $username, $password, $database);
 
     if ($conn->connect_errno) {
         die('Databaseverbinding mislukt: ' . $conn->connect_error);

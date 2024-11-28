@@ -12,9 +12,10 @@
 
 <body>
 <form method="post" action="post.php">
-        <div class="input-group">
-        <input type="text" id="task-name" class="form-control" required>
+    <div class="input-group">
+        <input type="text" id="task-name" name="task" class="form-control" required>
         <button type="submit" class="btn btn-dark">Toevoegen</button>
-        </div>
+    </div>
 </form>
+
 </body>

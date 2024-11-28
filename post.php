@@ -27,10 +27,10 @@
             <tbody id="taak-lijst">
             <?php
 
-            $servername = "takenlijst"; 
-            $username = "test";        
-            $password = "";            
-            $dbname = "tasks"; 
+            $servername = 'localhost';
+            $gebruikersnaam = 'taak';
+            $wachtwoord = '123';
+            $database = 'takenlijst';
 
             $conn = new mysqli($servername, $username, $password, $dbname);
 
