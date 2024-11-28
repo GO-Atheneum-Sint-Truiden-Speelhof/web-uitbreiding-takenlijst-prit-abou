@@ -3,8 +3,8 @@
 function maakVerbinding()
 {
     $servername = 'localhost';
-    $database = 'gebruikers';
-    $gebruikersnaam = 'taak';
+    $database = 'tasks';
+    $gebruikersnaam = 'test';
     $wachtwoord = '123';
 
     $conn = new mysqli($servername, $gebruikersnaam, $wachtwoord, $database);
