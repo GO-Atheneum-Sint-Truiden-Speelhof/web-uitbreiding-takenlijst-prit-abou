@@ -7,13 +7,13 @@
 
     <?php
    
-     '.$_POST["task-name"].'
+     '.$_POST["task"].'
      
     ?>
 
 <div class="card shadow-sm">
-        <div class="card-body">
-            <table class="table table-dark">
+    <div class="card-body">
+        <table class="table table-dark">
             <thead class="thead-dark">
                 <tr>
                  <th>Nr</th>
@@ -22,15 +22,14 @@
 				 <th>Gemaakt op</th>
                 </tr>
             </thead>
-            </table>
+        </table>
 
-            <tbody id="taak-lijst">
+        <tbody id="taak-lijst">
             <?php
-
-            $servername = 'localhost';
-            $gebruikersnaam = 'taak';
-            $wachtwoord = '123';
-            $database = 'takenlijst';
+            $servername = "localhost"; 
+            $gebruikersnaam = "test";        
+            $wachtwoord = "123";            
+            $database = "tasks"; 
 
             $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -38,7 +37,7 @@
                 die("Connection failed: " . mysqli_connect_error());
             }
 
-            $sql = "SELECT * FROM tasks";
+            $sql = "SELECT takenlijst FROM tasks";
             $result = mysqli_query($conn, $sql);
 
             if ($result) {
@@ -54,9 +53,9 @@
                     echo "Error: " . mysqli_error($conn);
                 }
                 ?>
-            </tbody>
+        </tbody>
             
-        </div>
+    </div>
 </div>
 </body>
 
