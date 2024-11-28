@@ -4,8 +4,8 @@ function maakVerbinding()
 {
     $servername = 'localhost';
     $database = 'tasks';
-    $gebruikersnaam = 'test';
-    $wachtwoord = '123';
+    $gebruikersnaam = 'taak';
+    $wachtwoord = 'prit';
 
     $conn = new mysqli($servername, $gebruikersnaam, $wachtwoord, $database);
 
@@ -22,7 +22,7 @@ function haalGebruikerOp($gebruikersnaam)
 {
     $conn = maakVerbinding();
     $gebruikersnaam = $conn->real_escape_string($gebruikersnaam);
-    $query = "SELECT wachtwoord FROM gebruikers WHERE gebruikersnaam = '$gebruikersnaam'";
+    $query = "SELECT wachtwoord FROM gebruikers1 WHERE gebruikersnaam = '$gebruikersnaam'";
     $result = $conn->query($query);
 
     $conn->close();
