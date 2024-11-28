@@ -31,7 +31,7 @@
             $wachtwoord = "123";            
             $database = "tasks"; 
 
-            $conn = new mysqli($servername, $username, $password, $dbname);
+            $conn = new mysqli($servername, $gebruikersnaam, $wachtwoord, $database);
 
             if (!$conn) {
                 die("Connection failed: " . mysqli_connect_error());
@@ -44,7 +44,7 @@
             while ($row = mysqli_fetch_assoc($result)) {
                     echo "<tr>";
                     echo "<td>" . $row['id'] . "</td>";
-                    echo "<td>" . $row['taak'] . "</td>";
+                    echo "<td>" . $row['task'] . "</td>";
                     echo "<td>" . $row['status'] . "</td>";
                     echo "<td>" . $row['created_at'] . "</td>";
                     echo "</tr>";

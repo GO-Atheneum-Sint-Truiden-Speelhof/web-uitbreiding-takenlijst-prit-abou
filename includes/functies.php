@@ -13,7 +13,7 @@ function maakVerbinding()
         die('Databaseverbinding mislukt: ' . $conn->connect_error);
     }
     else {
-        ('Connectie succesvol: ')
+        echo 'Connectie succesvol: ';
     }
     return $conn;
 }

@@ -18,8 +18,8 @@
 if (isset($_POST["gebruikersnaam"]) && !empty($_POST["gebruikersnaam"])) {
     $servername = 'localhost';
     $gebruikersnaam = 'test';
-    $wachtwoord = '123';
-    $database = 'gebruikers';
+    $wachtwoord = $hashed_password;
+    $database = 'gebruikers1';
 
     $conn = new mysqli($servername, $gebruikersnaam, $wachtwoord, $database);
 
@@ -28,7 +28,7 @@ if (isset($_POST["gebruikersnaam"]) && !empty($_POST["gebruikersnaam"])) {
     }
 
     $gebruikersnaam = $conn->real_escape_string($_POST["gebruikersnaam"]);
-    $query = "SELECT wachtwoord FROM gebruikers WHERE gebruikersnaam = '$gebruikersnaam'";
+    $query = "INSERT INTO gebruikers1 (gebruikersnaam, wachtwoord) VALUES ('$gebruikersnaam', '$wachtwoord')";
     $result = $conn->query($query);
 
     if ($result && $result->num_rows > 0) {
