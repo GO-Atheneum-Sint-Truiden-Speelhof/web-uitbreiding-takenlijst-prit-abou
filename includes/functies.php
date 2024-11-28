@@ -12,7 +12,9 @@ function maakVerbinding()
     if ($conn->connect_errno) {
         die('Databaseverbinding mislukt: ' . $conn->connect_error);
     }
-
+    else {
+        ('Connectie succesvol: ')
+    }
     return $conn;
 }
 // gebruiker zoeken
