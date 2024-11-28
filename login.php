@@ -17,18 +17,18 @@
 <?php
 if (isset($_POST["gebruikersnaam"]) && !empty($_POST["gebruikersnaam"])) {
     $servername = 'localhost';
-    $gebruikersnaam = 'taak';
+    $gebruikersnaam = 'test';
     $wachtwoord = '123';
-    $database = 'takenlijst';
+    $database = 'gebruikers';
 
-    $conn = new mysqli($host, $username, $password, $database);
+    $conn = new mysqli($servername, $gebruikersnaam, $wachtwoord, $database);
 
     if ($conn->connect_errno) {
         die('Databaseverbinding mislukt: ' . $conn->connect_error);
     }
 
-    $username = $conn->real_escape_string($_POST["gebruikersnaam"]);
-    $query = "SELECT wachtwoord FROM gebruikers WHERE gebruikersnaam = '$username'";
+    $gebruikersnaam = $conn->real_escape_string($_POST["gebruikersnaam"]);
+    $query = "SELECT wachtwoord FROM gebruikers WHERE gebruikersnaam = '$gebruikersnaam'";
     $result = $conn->query($query);
 
     if ($result && $result->num_rows > 0) {
