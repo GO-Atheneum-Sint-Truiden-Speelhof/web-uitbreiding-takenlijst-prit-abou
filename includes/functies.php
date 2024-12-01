@@ -1,20 +1,21 @@
 <?php
-// maakt verbinding met data base
-function maakVerbinding()
+function maakVerbinding() //maakt verbinding met de database
 {
     $servername = 'localhost';
-    $database = 'gebruikers';
     $gebruikersnaam = 'taak';
     $wachtwoord = '123';
+    $database = 'takenlijst';
 
     $conn = new mysqli($servername, $gebruikersnaam, $wachtwoord, $database);
 
-    if ($conn->connect_errno) {
-        die('Databaseverbinding mislukt: ' . $conn->connect_error);
+    if ($conn->connect_error) {
+        die("Verbinding mislukt: " . $conn->connect_error);
     }
 
     return $conn;
 }
+
+
 // gebruiker zoeken
 function haalGebruikerOp($gebruikersnaam)
 {
@@ -31,4 +32,4 @@ function haalGebruikerOp($gebruikersnaam)
         return null;
     }
 }
-
+?>
