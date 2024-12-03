@@ -2,9 +2,9 @@
 function maakVerbinding() //maakt verbinding met de database
 {
     $servername = 'localhost';
-    $database = 'gebruikers';
-    $gebruikersnaam = 'taak';
-    $wachtwoord = '123';
+    $database = 'takenlijst';
+    $gebruikersnaam = 'root';
+    $wachtwoord = '';
 
     $conn = new mysqli($servername, $gebruikersnaam, $wachtwoord, $database);
 

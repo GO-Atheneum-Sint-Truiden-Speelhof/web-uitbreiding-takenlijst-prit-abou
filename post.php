@@ -28,8 +28,8 @@
             <?php
 
             $servername = 'localhost';
-            $gebruikersnaam = 'taak';
-            $wachtwoord = '123';
+            $gebruikersnaam = 'root';
+            $wachtwoord = '';
             $database = 'takenlijst';
 
             $conn = new mysqli($servername, $username, $password, $database);
