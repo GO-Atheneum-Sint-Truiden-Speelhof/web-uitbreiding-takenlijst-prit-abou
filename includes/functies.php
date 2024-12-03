@@ -5,7 +5,7 @@ function maakVerbinding()
     $servername = 'localhost';
     $database = 'tasks';
     $gebruikersnaam = 'taak';
-    $wachtwoord = 'prit';
+    $wachtwoord = '123';
 
     $conn = new mysqli($servername, $gebruikersnaam, $wachtwoord, $database);
 
