@@ -32,7 +32,7 @@
             $wachtwoord = '';
             $database = 'takenlijst';
 
-            $conn = new mysqli($servername, $gebruikersnaam, $password, $database);
+            $conn = new mysqli($servername, $gebruikersnaam, $wachtwoord, $database);
 
             if (!$conn) {
                 die("Connection failed: " . mysqli_connect_error());
