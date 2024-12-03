@@ -8,6 +8,7 @@
 </head>
 <body>
     <h1 class="text-center mb-4">To-Do List</h1>
+    <?php include 'navbar.php'; ?>
     <?php
    
      '.$_POST["task-name"].'
