@@ -3,7 +3,8 @@
 <head>
     <title>To Do List</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-
+    <script src="scripts/bootstrap.js"></script>
+	<link rel="icon" type="image/png" href="favicon/lijstfoto.webp">
 </head>
 <body>
     <h1 class="text-center mb-4">To-Do List</h1>
@@ -57,9 +58,9 @@
                 }
                 
                 ?>
-                <form method="POST" action="takenlijst.php">
+                <form method="POST" action="post.php">
                  <input type="text" name="task-name" placeholder="Nieuwe taak">
-                <button type="submit">Toevoegen</button>
+                <button type="submit" class= "btn btn-dark">Toevoegen</button>
 </form>
             </tbody>
             
