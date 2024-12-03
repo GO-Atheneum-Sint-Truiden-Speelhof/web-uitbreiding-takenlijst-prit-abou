@@ -91,26 +91,5 @@
         </div>
     </div>
 
-    <div class="modal fade" id="editModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog">
-            <form method="POST" action="">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <input type="hidden" name="task-id" id="edit-task-id">
-                        <input type="text" name="edit-task" id="edit-task-name" class="form-control">
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <script>
-        function openEditModal(id, taskName) {
-            document.getElementById('edit-task-id').value = id;
-            document.getElementById('edit-task-name').value = taskName;
-            var editModal = new bootstrap.Modal(document.getElementById('editModal'));
-            editModal.show();
-        }
-    </script>
 </body>
 </html>
