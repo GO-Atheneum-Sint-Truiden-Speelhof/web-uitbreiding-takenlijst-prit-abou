@@ -21,7 +21,6 @@
         die("Connection failed: " . $conn->connect_error);
     }
 
-    // Verwerk POST-verzoek
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['task-name'])) {
         $taskName = mysqli_real_escape_string($conn, $_POST['task-name']);
 
@@ -36,7 +35,6 @@
         }
     }
 
-    // Haal taken op
     $sql = "SELECT * FROM tasks";
     $result = $conn->query($sql);
     ?>
