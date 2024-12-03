@@ -1,104 +1,73 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="robots" content="all">
-    <link rel="stylesheet" type="text/css" href="opmaak/bootstrap.css">
-    <title>To-Do Lijst</title>
-    <script src="scripts/jquery.js"></script>
-    <script src="scripts/bootstrap.js"></script>
-    <link rel="icon" type="image/png" href="favicon/lijstfoto.webp">
     <h1 class="text-center mb-4">To-Do List</h1>
 </head>
 <body>
 
-<?php
-// Check if a new task is submitted and add it to the database
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['task'])) {
-    $servername = 'localhost';
-    $gebruikersnaam = 'taak';
-    $wachtwoord = '123';
-    $database = 'takenlijst';
-
-    //  connectie met de database
-    $conn = new mysqli($servername, $gebruikersnaam, $wachtwoord, $database);
-
-    // controleerd connectie
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
-
-    $task = $conn->real_escape_string($_POST['task']);
-
-    $sql = "INSERT INTO tasks (taak, status, created_at) VALUES ('$task', 'Nog te doen', NOW())";
-
-    if ($conn->query($sql) === TRUE) {
-        echo "<p>Nieuwe taak toegevoegd!</p>";
-    } else {
-        echo "Error: " . $conn->error;
-    }
-
-    $conn->close();
-}
-?>
-
-<form method="POST" action="post.php">
-    <div class="input-group">
-        <input type="text" name="task" class="form-control" placeholder="Voeg een taak toe" required>
-        <button type="submit" class="btn btn-dark">Toevoegen</button>
-    </div>
-</form>
+    <?php
+   
+     '.$_POST["task-name"].'
+     
+    ?>
 
 <div class="card shadow-sm">
-    <div class="card-body">
-        <table class="table table-dark">
+        <div class="card-body">
+            <table class="table table-dark">
             <thead class="thead-dark">
                 <tr>
-                    <th>Nr</th>
-                    <th>Taak</th>
-                    <th>Status</th>
-                    <th>Gemaakt op</th>
+                 <th>Nr</th>
+                 <th>Taak</th>
+                 <th>Status</th>
+				 <th>Gemaakt op</th>
                 </tr>
             </thead>
+            </table>
+
             <tbody id="taak-lijst">
-                <?php
-                // Fetch tasks from the database
-                $servername = 'localhost';
-                $gebruikersnaam = 'taak';
-                $wachtwoord = '123';
-                $database = 'takenlijst';
+            <?php
 
-                $conn = new mysqli($servername, $gebruikersnaam, $wachtwoord, $database);
+            $servername = 'localhost';
+            $gebruikersnaam = 'taak';
+            $wachtwoord = '123';
+            $database = 'takenlijst';
 
-                // Check connection
-                if ($conn->connect_error) {
-                    die("Connection failed: " . $conn->connect_error);
+            $conn = new mysqli($servername, $username, $password, $database);
+
+            if (!$conn) {
+                die("Connection failed: " . mysqli_connect_error());
+            }
+
+            $sql = "SELECT * FROM tasks";
+            $result = mysqli_query($conn, $sql);
+
+            if ($result) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                    echo "<tr>";
+                    echo "<td>" . $row['id'] . "</td>";
+                    echo "<td>" . $row['taak'] . "</td>";
+                    echo "<td>" . $row['status'] . "</td>";
+                    echo "<td>" . $row['created_at'] . "</td>";
+                    echo "</tr>";
                 }
-
-                // Select all tasks from the database
-                $sql = "SELECT * FROM tasks";
-                $result = $conn->query($sql);
-
-                if ($result) {
-                    while ($row = $result->fetch_assoc()) {
-                        echo "<tr>";
-                        echo "<td>" . $row['id'] . "</td>";
-                        echo "<td>" . htmlspecialchars($row['taak']) . "</td>";
-                        echo "<td>" . htmlspecialchars($row['status']) . "</td>";
-                        echo "<td>" . htmlspecialchars($row['created_at']) . "</td>";
-                        echo "</tr>";
-                    }
-                } else {
-                    echo "<tr><td colspan='4'>Geen taken gevonden.</td></tr>";
+            } else {
+                    echo "Error: " . mysqli_error($conn);
                 }
-
-                $conn->close();
                 ?>
             </tbody>
-        </table>
-    </div>
+            
+        </div>
 </div>
-
 </body>
+
+
+
+
+
+
+
+
+
+
 </html>
+
