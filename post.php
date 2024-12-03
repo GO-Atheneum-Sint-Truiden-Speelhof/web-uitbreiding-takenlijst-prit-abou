@@ -54,7 +54,12 @@
             } else {
                     echo "Error: " . mysqli_error($conn);
                 }
+                
                 ?>
+                <form method="POST" action="takenlijst.php">
+                 <input type="text" name="task-name" placeholder="Nieuwe taak">
+                <button type="submit">Toevoegen</button>
+</form>
             </tbody>
             
         </div>
