@@ -11,7 +11,7 @@
 </head>
 <body>
     
-    <?php include 'navbar.php'; ?>
+    <?php include 'includes/nav.php'; ?>
 
     <div class="container mt-4">
         <h1 class="text-center mb-4">Login</h1>

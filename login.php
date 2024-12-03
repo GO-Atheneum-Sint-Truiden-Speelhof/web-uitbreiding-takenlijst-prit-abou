@@ -11,7 +11,7 @@
 	<link rel="icon" type="image/png" href="favicon/lijstfoto.webp">
 	<h1 class="text-center mb-4">To-Do Lijst</h1>
 </head>
-
+<?php include 'includes/nav.php'; ?>
 <body>
 <h1>Login</h1>
 <?php
@@ -59,6 +59,6 @@ if (isset($_POST["gebruikersnaam"]) && !empty($_POST["gebruikersnaam"])) {
     <?php
     }
 ?>
-<?php include 'includes/functies.php';?>
+
 </body>
 </html>
