@@ -1,21 +1,31 @@
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<meta charset=utf-8>
-	<meta name="robots" content="all">
-	<link rel="stylesheet" type="text/css" href="opmaak/bootstrap.css">
-	<title>To-Do Lijst</title>
-	<script src="scripts/jquery.js"></script>
-	<script src="scripts/bootstrap.js"></script>
-	<link rel="icon" type="image/png" href="favicon/lijstfoto.webp">
-	<h1 class="text-center mb-4">To-Do List</h1>
+    <meta charset="utf-8">
+    <meta name="robots" content="all">
+    <link rel="stylesheet" type="text/css" href="opmaak/bootstrap.css">
+    <title>To-Do Lijst</title>
+    <script src="scripts/jquery.js"></script>
+    <script src="scripts/bootstrap.js"></script>
+    <link rel="icon" type="image/png" href="favicon/lijstfoto.webp">
 </head>
 <body>
-<form method="post" action="post.php">
-    <div class="input-group">
-        <input type="text" id="task-name" name="task" class="form-control" required>
-        <button type="submit" class="btn btn-dark">Toevoegen</button>
-    </div>
-</form>
+    <!-- Include Navbar -->
+    <?php include 'navbar.php'; ?>
 
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">Login</h1>
+        <form method="post" action="authenticate.php">
+            <div class="mb-3">
+                <label for="username" class="form-label">Gebruikersnaam</label>
+                <input type="text" id="username" name="username" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Wachtwoord</label>
+                <input type="password" id="password" name="password" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-dark">Login</button>
+        </form>
+    </div>
 </body>
 </html>
