@@ -1,79 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset=utf-8>
-	<meta name="robots" content="all">
-	<link rel="stylesheet" type="text/css" href="opmaak/bootstrap.css">
-	<title>To-Do Lijst</title>
-	<script src="scripts/jquery.js"></script>
-	<script src="scripts/bootstrap.js"></script>
-	<link rel="icon" type="image/png" href="favicon/lijstfoto.webp">
-	<h1 class="text-center mb-4">To-Do Lijst</h1>
+    <title>To Do List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="scripts/bootstrap.js"></script>
+    <link rel="icon" type="image/png" href="favicon/lijstfoto.webp">
 </head>
 <body>
-    
-<?php
-$servername = 'localhost';
-$gebruikersnaam = 'root';
-$wachtwoord = '';
-$database = 'takenlijst';
+    <h1 class="text-center mb-4">To-Do List</h1>
 
-$conn = new mysqli($servername, $gebruikersnaam, $wachtwoord, $database);
+    <?php
+    $servername = 'localhost';
+    $gebruikersnaam = 'root';
+    $wachtwoord = '';
+    $database = 'takenlijst';
 
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+    $conn = new mysqli($servername, $gebruikersnaam, $wachtwoord, $database);
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['task-name'])) {
-    $taskName = mysqli_real_escape_string($conn, $_POST['task-name']);
-
-    if (!empty($taskName)) {
-        $sql = "INSERT INTO tasks (taak, status, created_at) VALUES ('$taskName', 'open', NOW())";
-
-        if (!mysqli_query($conn, $sql)) {
-            echo "Error: " . mysqli_error($conn);
-        }
-    } else {
-        echo "De taaknaam mag niet leeg zijn.";
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
     }
-}
 
-// taken ophalen
-$sql = "SELECT * FROM tasks";
-$result = $conn->query($sql);
-?>
+    // Verwerk POST-verzoek
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['task-name'])) {
+        $taskName = mysqli_real_escape_string($conn, $_POST['task-name']);
 
-<?php
-if (isset($_POST['task-name'])) {
-    echo htmlspecialchars($_POST['task-name']); 
-}
-?>
-<table class="table table-dark">
-    <thead class="thead-dark">
-        <tr>
-            <th>Nr</th>
-            <th>Taak</th>
-            <th>Status</th>
-            <th>Gemaakt op</th>
-        </tr>
-    </thead>
-    <tbody id="taak-lijst">
-        <?php
-        if ($result && $result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                echo "<tr>";
-                echo "<td>" . htmlspecialchars($row['id']) . "</td>";
-                echo "<td>" . htmlspecialchars($row['taak']) . "</td>";
-                echo "<td>" . htmlspecialchars($row['status']) . "</td>";
-                echo "<td>" . htmlspecialchars($row['created_at']) . "</td>";
-                echo "</tr>";
+        if (!empty($taskName)) {
+            $sql = "INSERT INTO tasks (taak, status, created_at) VALUES ('$taskName', 'open', NOW())";
+
+            if (!mysqli_query($conn, $sql)) {
+                echo "Error: " . mysqli_error($conn);
             }
         } else {
-            echo "<tr><td colspan='4'>Geen taken gevonden.</td></tr>";
+            echo "<div class='alert alert-danger'>De taaknaam mag niet leeg zijn.</div>";
         }
-        ?>
-    </tbody>
-</table>
+    }
 
+    // Haal taken op
+    $sql = "SELECT * FROM tasks";
+    $result = $conn->query($sql);
+    ?>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <table class="table table-dark">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Nr</th>
+                        <th>Taak</th>
+                        <th>Status</th>
+                        <th>Gemaakt op</th>
+                    </tr>
+                </thead>
+                <tbody id="taak-lijst">
+                    <?php
+                    if ($result && $result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<tr>";
+                            echo "<td>" . htmlspecialchars($row['id']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['taak']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['status']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['created_at']) . "</td>";
+                            echo "</tr>";
+                        }
+                    } else {
+                        echo "<tr><td colspan='4'>Geen taken gevonden.</td></tr>";
+                    }
+                    ?>
+                </tbody>
+            </table>
+
+            <form method="POST" action="">
+                <input type="text" name="task-name" placeholder="Nieuwe taak" class="form-control mb-2">
+                <button type="submit" class="btn btn-dark">Toevoegen</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

@@ -10,6 +10,7 @@
     <link rel="icon" type="image/png" href="favicon/lijstfoto.webp">
 </head>
 <body>
+    
     <?php include 'navbar.php'; ?>
 
     <div class="container mt-4">
