@@ -21,6 +21,7 @@
         die("Connection failed: " . $conn->connect_error);
     }
 
+    // taken toevoegen
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['task-name'])) {
         $taskName = mysqli_real_escape_string($conn, $_POST['task-name']);
 
@@ -35,6 +36,17 @@
         }
     }
 
+    // taken verwijderen
+    if (isset($_GET['delete'])) {
+        $id = intval($_GET['delete']);
+        $sql = "DELETE FROM tasks WHERE id = $id";
+
+        if (!mysqli_query($conn, $sql)) {
+            echo "Error: " . mysqli_error($conn);
+        }
+    }
+
+
     $sql = "SELECT * FROM tasks";
     $result = $conn->query($sql);
     ?>
@@ -48,6 +60,7 @@
                         <th>Taak</th>
                         <th>Status</th>
                         <th>Gemaakt op</th>
+                        <th>Acties</th>
                     </tr>
                 </thead>
                 <tbody id="taak-lijst">
@@ -59,10 +72,13 @@
                             echo "<td>" . htmlspecialchars($row['taak']) . "</td>";
                             echo "<td>" . htmlspecialchars($row['status']) . "</td>";
                             echo "<td>" . htmlspecialchars($row['created_at']) . "</td>";
+                            echo "<td>
+                                <a href='?delete=" . $row['id'] . "' class='btn btn-danger btn-sm'>Verwijderen</a>
+                                </td>";
                             echo "</tr>";
                         }
                     } else {
-                        echo "<tr><td colspan='4'>Geen taken gevonden.</td></tr>";
+                        echo "<tr><td colspan='5'>Geen taken gevonden.</td></tr>";
                     }
                     ?>
                 </tbody>
@@ -74,5 +90,27 @@
             </form>
         </div>
     </div>
+
+    <div class="modal fade" id="editModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <form method="POST" action="">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <input type="hidden" name="task-id" id="edit-task-id">
+                        <input type="text" name="edit-task" id="edit-task-name" class="form-control">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function openEditModal(id, taskName) {
+            document.getElementById('edit-task-id').value = id;
+            document.getElementById('edit-task-name').value = taskName;
+            var editModal = new bootstrap.Modal(document.getElementById('editModal'));
+            editModal.show();
+        }
+    </script>
 </body>
 </html>
