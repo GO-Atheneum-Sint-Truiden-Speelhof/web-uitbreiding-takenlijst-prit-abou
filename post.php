@@ -5,16 +5,15 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="scripts/bootstrap.js"></script>
     <link rel="icon" type="image/png" href="favicon/lijstfoto.webp">
-    
+    <?php include 'includes/nav.php' ?>
 </head>
-<?php include 'includes/nav.php'; ?>
 <body>
     <h1 class="text-center mb-4">To-Do List</h1>
 
     <?php
     $servername = 'localhost';
-    $gebruikersnaam = 'root';
-    $wachtwoord = '';
+    $gebruikersnaam = 'taak';
+    $wachtwoord = 'lijst';
     $database = 'takenlijst';
 
     $conn = new mysqli($servername, $gebruikersnaam, $wachtwoord, $database);
@@ -47,10 +46,6 @@
             echo "Error: " . mysqli_error($conn);
         }
     }
-
-
-    $sql = "SELECT * FROM tasks";
-    $result = $conn->query($sql);
     ?>
 
     <div class="card shadow-sm">
@@ -67,6 +62,12 @@
                 </thead>
                 <tbody id="taak-lijst">
                     <?php
+                    include 'includes/functies.php';
+                    $conn = maakVerbinding();
+
+                    $sql = "SELECT * FROM tasks";
+                    $result = $conn->query($sql);
+
                     if ($result && $result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
                             echo "<tr>";

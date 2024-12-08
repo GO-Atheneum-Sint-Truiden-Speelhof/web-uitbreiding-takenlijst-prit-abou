@@ -1,37 +1,34 @@
 <?php
-function maakVerbinding() //maakt verbinding met de database
-{
+function maakVerbinding() {
     $servername = 'localhost';
     $database = 'takenlijst';
-    $gebruikersnaam = 'root';
-    $wachtwoord = '';
+    $gebruikersnaam = 'taak';
+    $wachtwoord = 'lijst';
 
     $conn = new mysqli($servername, $gebruikersnaam, $wachtwoord, $database);
 
     if ($conn->connect_error) {
         die("Verbinding mislukt: " . $conn->connect_error);
     }
-    else {
-        echo 'Connectie succesvol: ';
-    }
+
     return $conn;
 }
 
-
-// gebruiker zoeken
-function haalGebruikerOp($gebruikersnaam)
-{
+function valideerGebruiker($gebruikersnaam, $wachtwoord) {
     $conn = maakVerbinding();
-    $gebruikersnaam = $conn->real_escape_string($gebruikersnaam);
-    $query = "SELECT wachtwoord FROM gebruikers1 WHERE gebruikersnaam = '$gebruikersnaam'";
-    $result = $conn->query($query);
+    $sql = "SELECT wachtwoord FROM gebruikers WHERE gebruikersnaam = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $gebruikersnaam);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
     $conn->close();
 
     if ($result && $result->num_rows > 0) {
-        return $result->fetch_assoc();
-    } else {
-        return null;
+        $row = $result->fetch_assoc();
+        return password_verify($wachtwoord, $row['wachtwoord']);
     }
+
+    return false;
 }
 ?>
