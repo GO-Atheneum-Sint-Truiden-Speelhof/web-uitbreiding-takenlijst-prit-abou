@@ -3,7 +3,7 @@
 | Opdracht | Goed (5) | Voldoende (3) | Onvoldoende (1) | Niet (0) | Score (35)|
 | :------- | :---: | :---------: | :-----------: | :----: |---:|
 | De leerling voorziet een formulier waar de gebruiker een nieuwe taak kan invoeren | |X | | |3 |
-| De leerling toon de lijst van taken in een tabel.  | | X| | | 3|
+| De leerling toon de lijst van taken in een tabel.  | X| | | | 5|
 | De leerling zorgt dat de layout responsief is. (Bootstrap)  | | X| | |3 |
 | De leerling creeërt een correcte databank + tabel voor de gegevens. | | | X| |1 |
 | De leerling kan de gegevens van een taak bewaren in een databank. | | | | X|0 |
